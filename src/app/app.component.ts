@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'ngRouting';
-  genders = ['Male', 'Female'];
+  genders = ['male', 'female'];
   public signUpForm: FormGroup;
   constructor( ) { }
   ngOnInit() {
     this.signUpForm = new FormGroup({
-      username: new FormControl(null),
-      email: new FormControl(null),
-      gender: new FormControl('Male')
+      username: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      gender: new FormControl('male')
     });
 
   }
