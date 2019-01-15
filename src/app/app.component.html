@@ -5,13 +5,13 @@
         <div formGroupName="userData">
           <div class="form-group">
             <label for="">Username</label>
-            <input type="text" formControlName="username" class="form-control">
-            <span *ngIf="!signUpForm.get('userData.username').valid && signUpForm.get('userData.username').touched"
+            <input type="text" formControlName="userName" class="form-control">
+            <span *ngIf="!signUpForm.get('userData.userName').valid && signUpForm.get('userData.userName').touched"
               class="text-danger">
-              <span *ngIf="signUpForm.get('userData.username').errors.nameIsForbidden">
+              <span *ngIf="signUpForm.get('userData.userName').errors.nameIsForbidden">
                 Please enter a valid name.
               </span>
-              <span *ngIf="signUpForm.get('userData.username').errors.required"> 
+              <span *ngIf="signUpForm.get('userData.userName').errors.required"> 
                   This field is required !
               </span>
             </span>
@@ -41,6 +41,7 @@
 
         </div>
         <input type="submit" value="Submit" class="btn btn-primary">
+        <input type="button" value="Reset" (click)="onReset()" class="btn btn-default ml-2" >
       </form>
     </div>
   </div>

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.signUpForm = new FormGroup({
       userData: new FormGroup({
-        username: new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
+        userName: new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
       }),
       gender: new FormControl('male'),
@@ -27,7 +27,26 @@ export class AppComponent implements OnInit {
     this.signUpForm.statusChanges.subscribe(
       (status) => console.log(status)
     );
+    this.signUpForm.setValue({
+      'userData' : {
+        'userName': 'Max',
+        'email': 'max@gmail.com'
+      },
+      'gender': 'male',
+      // 'hobbies': ['Playing criket', 'listening music']
+      'hobbies': []
+    });
 
+    this.signUpForm.patchValue({
+      'userData' : {
+        'userName': 'John'
+      },
+    });
+
+  }
+
+  onReset() {
+    this.signUpForm.reset();
   }
 
   onAddHobby() {
